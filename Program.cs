@@ -18,26 +18,37 @@ static class Program{
         }
         void Task_1(){
             Client client1 = new Client();
-            string? passport = "";
-            if (client1.passport != ""){
-                foreach (char el in client1.passport){
-                    passport = passport + "*";
+            Consultant consultant = new Consultant();
+            Console.WriteLine("Выберите операцию:");
+            Console.WriteLine("1 - Просмотр паспортных данных");
+            Console.WriteLine("2 - Просотр ФИО клиента");
+            Console.WriteLine("3 - Просмотр номера телефона");
+            Console.WriteLine("4 - Изменение Номера телефона");
+            Console.WriteLine("5 - Завершение операций с клиентом");
+            bool flag = false;
+            while (flag == false){
+                string? operation = Console.ReadLine();
+                switch (operation){
+                    case "1":
+                        consultant.PassportView(client1);
+                        break;
+                    case "2":
+                        consultant.NameView(client1);
+                        break;
+                    case "3":
+                        consultant.NumbnerView(client1);
+                        break;
+                    case "4":
+                        consultant.NumberRed(client1);
+                        break;
+                    case "5":
+                        flag = true;
+                        break;
+                    default: 
+                        Console.WriteLine("Error comand");
+                        break;
                 }
-                Console.WriteLine(passport);
             }
-            else Console.WriteLine("passport string not");
-            Console.WriteLine($"Фамилия: {client1.surname}");
-            Console.WriteLine($"Имя: {client1.name}");
-            Console.WriteLine($"Отчество: {client1.middleName}");
-            Console.WriteLine($"Номер телефона: {client1.phoneNumber}");
-            while (1 == 1){
-                client1.phoneNumber = Console.ReadLine();
-                if (client1.phoneNumber == ""){
-                    Console.WriteLine("Номер телефона не введен");
-                }
-                else break;
-            }
-            Console.WriteLine($"Новый номер телефона: {client1.phoneNumber}");
         }
         void Task_2(){
             
